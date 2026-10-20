@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sierra Game Studio — games by Sooriyan Gramani</title>
+<meta name="description" content="Sierra is a creative, playful and unconventional game studio founded by Sooriyan Gramani. Play the games, read the briefs and see the code.">
+<meta name="theme-color" content="#0A1220">
+<link rel="icon" href="assets/brand/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="wrap site-header">
+  <a class="brand" href="#top"><img src="assets/brand/icon.png" alt="" width="40" height="38"><span>SIERRA</span></a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="#games">Games</a>
+    <a href="#studio">Studio</a>
+    <a href="#founder">Founder</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section id="top" class="wrap hero">
+  <div class="hero-copy">
+    <img src="assets/brand/wordmark.png" alt="Sierra">
+    <h1>A creative, playful and unconventional game studio.</h1>
+    <p>We make unique gameplay experiences that embrace humour, creativity and innovation. Dig up a seabed, drive a minibus taxi, fight off rats, outrun a gun-toting car.</p>
+    <div class="btn-row">
+      <a class="btn primary" href="#games">Explore our games</a>
+      <a class="btn" href="https://hypervoid01.itch.io/">Play on itch.io</a>
+    </div>
+  </div>
+</section>
+
+<section id="games" class="games-band">
+  <div class="wrap">
+    <div class="eyebrow">01 — Our games</div>
+    <h2 class="big">Play what we've made</h2>
+    <p class="games-intro">Every game has its own page with the brief, synopsis, core gameplay, features, systems and a download link. More are on the way.</p>
+    <div class="card-grid" id="game-cards"></div>
+  </div>
+</section>
+
+<section id="studio" class="wrap studio">
+  <div class="studio-row">
+    <div>
+      <div class="eyebrow">02 — The studio</div>
+      <h2 class="big">Playful on purpose</h2>
+    </div>
+    <div>
+      <p>Sierra is an independent game studio founded by Sooriyan Gramani. We position ourselves as creative, playful and unconventional, and we're known for gameplay experiences that don't feel like anyone else's.</p>
+      <p class="muted">We take real places and real problems, such as South African minibus taxis, kitchen hygiene and sustainable energy, and turn them into games that are fun first. We like game jams, tight scopes and finishing things, then putting them on itch.io for anyone to play.</p>
+    </div>
+  </div>
+  <div class="pillars" id="pillars"></div>
+</section>
+
+<section id="founder" class="wrap founder">
+  <div class="founder-row">
+    <div>
+      <div class="eyebrow">03 — The founder</div>
+      <div class="founder-head">
+        <img src="assets/brand/sooriyan.jpg" alt="Sooriyan Gramani, founder of Sierra" width="104" height="104">
+        <h2>Sooriyan Gramani</h2>
+      </div>
+      <div class="job">Game designer</div>
+      <p class="lead">I'm a third-year Game Design student at Emeris Umhlanga (Vega School Durban). I specialise in programming with C# in Unity and in 3D modelling in Blender.</p>
+      <p class="muted">I take part in game jams often and build side projects for my itch.io page to sharpen both the technical and creative sides of my work. I enjoy exploring new possibilities, and I tutored game development at Emeris in 2025. I program every Sierra game and design most of them.</p>
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn primary" href="Sooriyan_Gramani_CV.pdf">Download my CV</a>
+        <a class="btn" href="https://www.linkedin.com/in/sooriyan-gramani-740196435/">LinkedIn</a>
+      </div>
+    </div>
+    <div>
+      <div id="timeline"></div>
+      <div class="timeline-end"></div>
+      <div class="tools">
+        <div class="mono-label">Tools</div>
+        <div class="tags" id="tools"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap contact">
+  <div class="contact-box">
+    <div>
+      <div class="eyebrow">04 — Contact</div>
+      <h2 class="big">Let's build something unconventional</h2>
+      <p>Recruiters, studios and collaborators: get in touch, or just go and play the games.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:sgramani1@gmail.com">sgramani1@gmail.com</a>
+      <a href="https://hypervoid01.itch.io/">hypervoid01.itch.io</a>
+      <a href="https://www.linkedin.com/in/sooriyan-gramani-740196435/">LinkedIn: Sooriyan Gramani</a>
+      <a href="https://github.com/HyperVoid01">github.com/HyperVoid01</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Sierra Game Studio</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<noscript><p class="wrap muted">The game list needs JavaScript. Browse the games on <a href="https://hypervoid01.itch.io/">itch.io</a>.</p></noscript>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+<script>renderHome();</script>
+</body>
+</html>
