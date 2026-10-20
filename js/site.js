@@ -8,7 +8,71 @@
     });
   }
   function gameUrl(g) { return 'game.html?game=' + encodeURIComponent(g.slug); }
+  function videoId(u) { var m = String(u).match(/(?:youtu\.be\/|v=)([\w-]{6,})/); return m ? m[1] : ''; }
   function eyebrow(t) { return '<div class="eyebrow">' + esc(t) + '</div>'; }
+
+  /* ---------- Shared behaviour ---------- */
+  function initReveal() {
+    var sel = 'main section, .card, .pillar, .tile, .more-card, .proof-item, .shots a, .timeline-row, .credit, .row, .watch > div';
+    var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(function (el, i) {
+      // skip containers that wrap other revealed items, and anything already on screen at load for hero
+      if (el.matches('main section') && el.querySelector('.card, .tile, .more-card, .shots, .pillar, .proof-item')) return;
+      el.classList.add('reveal');
+      var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.transitionDelay = Math.min(sib, 5) * 70 + 'ms';
+      io.observe(el);
+    });
+  }
+
+  function initVideo() {
+    document.querySelectorAll('.video-embed').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-video') + '?autoplay=1&rel=0';
+        f.title = 'Demo video';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.allowFullscreen = true;
+        b.replaceWith(f);
+        var wrap = f.parentNode; f.style.cssText = 'display:block;width:100%;aspect-ratio:16/9;border:0';
+      });
+    });
+  }
+
+  function initLightbox() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.shots a'));
+    if (!links.length) return;
+    var lb = document.createElement('div');
+    lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Screenshot viewer');
+    lb.innerHTML = '<button class="x" aria-label="Close">✕</button><button class="prev" aria-label="Previous screenshot">‹</button><button class="next" aria-label="Next screenshot">›</button><img alt=""><div class="cap"></div><div class="count"></div>';
+    document.body.appendChild(lb);
+    var img = lb.querySelector('img'), cap = lb.querySelector('.cap'), count = lb.querySelector('.count'), i = 0, opener = null;
+    function show(n) {
+      i = (n + links.length) % links.length;
+      var im = links[i].querySelector('img');
+      img.src = links[i].getAttribute('href'); img.alt = im.alt; cap.textContent = im.alt; count.textContent = (i + 1) + ' / ' + links.length;
+    }
+    function open(n, el) { opener = el; show(n); lb.classList.add('open'); document.body.style.overflow = 'hidden'; lb.querySelector('.x').focus(); }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; if (opener) opener.focus(); }
+    links.forEach(function (a, n) { a.addEventListener('click', function (e) { e.preventDefault(); open(n, a); }); });
+    lb.querySelector('.x').onclick = close;
+    lb.querySelector('.prev').onclick = function () { show(i - 1); };
+    lb.querySelector('.next').onclick = function () { show(i + 1); };
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(i - 1);
+      else if (e.key === 'ArrowRight') show(i + 1);
+    });
+    var x0 = null;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) { if (x0 === null) return; var d = e.changedTouches[0].clientX - x0; if (Math.abs(d) > 50) show(i + (d < 0 ? 1 : -1)); x0 = null; });
+  }
 
   /* ---------- Home ---------- */
   window.renderHome = function () {
@@ -38,6 +102,7 @@
     document.getElementById('tools').innerHTML = D.home.tools.map(function (t) {
       return '<span class="tag tool">' + esc(t) + '</span>';
     }).join('');
+    initReveal();
   };
 
   /* ---------- Game page ---------- */
@@ -116,7 +181,8 @@
     // Demo + download
     html += '<section id="demo" class="wrap block">' + eyebrow('Watch and play') + '<h2 class="section">Demo video and download</h2><div class="watch">' +
       '<div><h3>Demo video</h3>' +
-      '<a class="video-link" href="' + esc(g.demo) + '" aria-label="Watch the ' + esc(g.title) + ' demo video on YouTube"><span class="play"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#06101E"/></svg></span><span class="mono-label">Watch on YouTube</span></a>' +
+      '<button type="button" class="video-embed" data-video="' + esc(videoId(g.demo)) + '" aria-label="Play the ' + esc(g.title) + ' demo video"><img src="https://i.ytimg.com/vi/' + esc(videoId(g.demo)) + '/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#06101E"/></svg></span></button>' +
+      '<p class="video-note">Plays here. <a href="' + esc(g.demo) + '">Open on YouTube</a></p>' +
       '<div class="qr-row top"><img src="' + esc(g.demoQr) + '" alt="QR code linking to the ' + esc(g.title) + ' demo video" width="140" height="140">' +
       '<div class="info"><div class="mono-label">Video link</div><a class="link accent" href="' + esc(g.demo) + '">' + esc(g.demo) + '</a></div></div></div>' +
       '<div><h3>Download ' + esc(g.title) + '</h3><p>Free to download on itch.io. Scan the code or use the link.</p>' +
@@ -134,5 +200,6 @@
       }).join('') + '</div></section>';
 
     document.getElementById('game').innerHTML = html;
+    initVideo(); initLightbox(); initReveal();
   };
 })();

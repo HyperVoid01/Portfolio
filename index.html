@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -26,6 +27,7 @@
 
 <main>
 <section id="top" class="wrap hero">
+  <img class="hero-bolt" src="assets/brand/icon.png" alt="" aria-hidden="true">
   <div class="hero-copy">
     <img src="assets/brand/wordmark.png" alt="Sierra">
     <h1>A creative, playful and unconventional game studio.</h1>
@@ -35,6 +37,13 @@
       <a class="btn" href="https://hypervoid01.itch.io/">Play on itch.io</a>
     </div>
   </div>
+</section>
+
+<section class="wrap proof" aria-label="Highlights">
+  <div class="proof-item"><b>Unity + C#</b><span>Gameplay and systems programming</span></div>
+  <div class="proof-item"><b>Shipped</b><span>Every game playable on itch.io</span></div>
+  <div class="proof-item"><b>Game jams</b><span>Campus Game Jam, SAGJ2024 and more</span></div>
+  <div class="proof-item"><b>Tutor</b><span>Game development at Emeris, 2025</span></div>
 </section>
 
 <section id="games" class="games-band">
@@ -61,13 +70,11 @@
 </section>
 
 <section id="founder" class="wrap founder">
-  <div class="founder-row">
-    <div>
-      <div class="eyebrow">03 — The founder</div>
-      <div class="founder-head">
-        <img src="assets/brand/sooriyan.jpg" alt="Sooriyan Gramani, founder of Sierra" width="104" height="104">
-        <h2>Sooriyan Gramani</h2>
-      </div>
+  <div class="eyebrow">03 — The founder</div>
+  <div class="founder-top">
+    <img class="portrait" src="assets/brand/sooriyan.jpg" alt="Sooriyan Gramani, founder of Sierra" width="300" height="400">
+    <div class="founder-copy">
+      <h2 class="big" style="margin-bottom:8px">Sooriyan Gramani</h2>
       <div class="job">Game designer</div>
       <p class="lead">I'm a third-year Game Design student at Emeris Umhlanga (Vega School Durban). I specialise in programming with C# in Unity and in 3D modelling in Blender.</p>
       <p class="muted">I take part in game jams often and build side projects for my itch.io page to sharpen both the technical and creative sides of my work. I enjoy exploring new possibilities, and I tutored game development at Emeris in 2025. I program every Sierra game and design most of them.</p>
@@ -76,13 +83,15 @@
         <a class="btn" href="https://www.linkedin.com/in/sooriyan-gramani-740196435/">LinkedIn</a>
       </div>
     </div>
+  </div>
+  <div class="founder-bottom">
     <div>
       <div id="timeline"></div>
       <div class="timeline-end"></div>
-      <div class="tools">
-        <div class="mono-label">Tools</div>
-        <div class="tags" id="tools"></div>
-      </div>
+    </div>
+    <div class="tools">
+      <div class="mono-label">Tools</div>
+      <div class="tags" id="tools"></div>
     </div>
   </div>
 </section>
