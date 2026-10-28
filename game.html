@@ -4,34 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sierra Game Studio</title>
-<meta name="description" content="A game by Sierra Game Studio.">
-<meta name="theme-color" content="#0A1220">
+<meta name="robots" content="noindex">
 <link rel="icon" href="assets/brand/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add("js")</script>
-<link rel="stylesheet" href="css/style.css?v=2">
+<script>
+  /* Old links used game.html?game=<slug>. Game pages now live at games/<slug>.html */
+  (function () {
+    var slug = new URLSearchParams(location.search).get('game');
+    location.replace(slug && /^[a-z0-9-]+$/.test(slug) ? 'games/' + slug + '.html' : 'index.html#games');
+  })();
+</script>
 </head>
-<body>
-
-<header class="wrap site-header">
-  <a class="brand" href="index.html"><img src="assets/brand/icon.png" alt="" width="40" height="38"><span>SIERRA</span></a>
-  <a class="crumb" href="index.html#games">← All games</a>
-</header>
-
-<main id="game"></main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© 2026 Sierra Game Studio</span>
-    <a href="index.html">Back to home</a>
-  </div>
-</footer>
-
-<noscript><p class="wrap muted">This page needs JavaScript. Browse the games on <a href="https://hypervoid01.itch.io/">itch.io</a>.</p></noscript>
-<script src="js/data.js?v=2"></script>
-<script src="js/site.js?v=2"></script>
-<script>renderGame();</script>
+<body style="background:#0A1220;color:#EAF3FF;font-family:system-ui,sans-serif">
+<p style="padding:32px">Moved. <a href="index.html#games" style="color:#5CB8FF">See all games</a>.</p>
 </body>
 </html>

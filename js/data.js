@@ -5,9 +5,59 @@ window.SIERRA = {
     "email": "sgramani1@gmail.com",
     "itch": "https://hypervoid01.itch.io/",
     "linkedin": "https://www.linkedin.com/in/sooriyan-gramani-740196435/",
-    "github": "https://github.com/HyperVoid01"
+    "github": "https://github.com/HyperVoid01",
+    "url": "https://hypervoid01.github.io/Portfolio/",
+    "cv": "Sooriyan_Gramani_CV.pdf",
+    "portraitAlt": "",
+    "portraitLines": [
+      "Howzit! I program every Sierra game.",
+      "Yes, I wrote the rat AI.",
+      "Achievement unlocked: met the founder.",
+      "Press ` to open the inspector.",
+      "Try Ctrl + K. You'll find everything.",
+      "Okay, okay. Go play Redline."
+    ]
   },
   "home": {
+    "strip": [
+      "Unity", "C#", "Blender", "Campus Game Jam", "SAGJ2024", "Procedural generation",
+      "Gameplay AI", "itch.io", "GitHub", "Game jams"
+    ],
+    "recognition": [
+      {
+        "kind": "Game jam",
+        "event": "Campus Game Jam",
+        "date": "March 2026",
+        "game": "flow-state",
+        "detail": "Made solo in 3 days. Theme: “Switch”.",
+        "result": ""
+      },
+      {
+        "kind": "Game jam",
+        "event": "Campus Game Jam by YellowDot",
+        "date": "",
+        "game": "mzansi-rush",
+        "detail": "Team of 3, 3 days. Theme: original games about African culture.",
+        "result": ""
+      },
+      {
+        "kind": "Game jam",
+        "event": "SAGJ2024",
+        "date": "2024",
+        "game": "wild-focus",
+        "detail": "Team of 5, 2 days. Theme: “Depth”.",
+        "result": ""
+      },
+      {
+        "kind": "Teaching",
+        "event": "Game Development Tutor",
+        "date": "2025",
+        "game": "",
+        "detail": "Tutored game development students at Emeris Umhlanga.",
+        "result": ""
+      }
+    ],
+    "stats": [],
     "pillars": [
       {
         "num": "01",
